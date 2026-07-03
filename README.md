@@ -102,7 +102,7 @@ This project is not affiliated with DMC or Amazon.
 
 ## License
 
-Released under the [MIT License](LICENSE). Copyright (c) 2026 jakemorganlabs.
+Released under the [MIT License — Non-Commercial Use Only](LICENSE). Copyright (c) 2026 jakemorganlabs. Personal and non-commercial use is permitted; commercial use, sale, or sublicensing requires prior written permission.
 
 ## Tech
 
