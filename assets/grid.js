@@ -143,7 +143,7 @@ export function computeGridDimensions(sourceWidth, sourceHeight, preset, custom,
     return {
       width: Math.max(10, Math.min(400, custom.width)),
       height: Math.max(10, Math.min(400, custom.height)),
-      hpi: custom.hpi ?? 14,
+      hpi: Math.max(2, Math.min(60, custom.hpi ?? 14)),
     };
   }
 

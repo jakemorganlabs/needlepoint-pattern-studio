@@ -59,6 +59,20 @@ const scriptBlock =
 
 let html = read(join(root, "index.html"));
 
+// Inline the logo SVG as a data URI so the offline file renders the brand mark
+// without any external file reference (file:// can't fetch linked assets, but
+// <img src="..."> and even data: URIs are fine — data URIs guarantee it).
+const logoSvg = read(join(assets, "logo.svg"));
+const logoDataUri = `data:image/svg+xml;utf8,${encodeURIComponent(logoSvg)}`;
+html = html.replace(
+  /<link rel="icon" type="image\/svg\+xml" href="assets\/logo\.svg" \/>/,
+  () => ""
+);
+html = html.replace(
+  /<img src="assets\/logo\.svg"/,
+  () => `<img src="${logoDataUri}"`
+);
+
 // Use function replacers so `$`, `$$`, `$&` in the inlined code are inserted
 // verbatim (a plain string replacement would treat them as special patterns).
 // Inline the stylesheet.
@@ -75,8 +89,8 @@ html = html.replace(
 
 // Mark this build as the offline edition in the title/meta.
 html = html.replace(
-  /<title>Needlepoint Pattern Maker<\/title>/,
-  () => "<title>Needlepoint Pattern Maker — Offline Edition</title>"
+  /<title>Live Oak Design House — Needlepoint Pattern Maker<\/title>/,
+  () => "<title>Live Oak Design House — Offline Edition</title>"
 );
 
 const outDir = join(root, "dist-local");

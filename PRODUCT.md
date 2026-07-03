@@ -4,17 +4,21 @@
 
 brand
 
+## Brand
+
+Live Oak Design House — a coastal craft studio identity. Logo: a clean silhouette of a coastal live oak tree in bronze (#D59940) on a deep forest green square (#2F4F3A).
+
 ## Users
 
 Needlepoint and cross-stitch crafters who want to turn personal photos or artwork into stitchable patterns. They work at home with canvas, DMC floss, and printed or on-screen charts. They need accurate color matching, readable grid labels, and a shopping list of threads.
 
 ## Product Purpose
 
-Convert uploaded images into DMC floss-colored needlepoint grid patterns with configurable canvas size, color count, and stitch style — including a custom Wave Tent technique. Output includes a labeled pattern chart, thread palette with purchase links, and exportable files for printing or sharing.
+Convert uploaded images into DMC floss-colored needlepoint grid patterns with configurable canvas size, fully custom Mesh Count/HPI, color count, and stitch style — including a custom Wave Tent technique and 15 additional traditional stitches. Output includes a labeled pattern chart, thread palette with purchase links, and exportable files for printing or sharing.
 
 ## Brand Personality
 
-Refined, tactile, confident. Like a well-edited craft magazine — editorial restraint with warmth carried through typography and accent color, not beige backgrounds.
+Coastal, grounded, considered. Like a coastal craft studio — deep live-oak green and warm bronze, editorial restraint with warmth carried through typography and the brand mark, not beige backgrounds.
 
 ## Anti-references
 

@@ -1,14 +1,14 @@
 # Needlepoint Pattern Maker
 
-Turn any photo or artwork into a stitch-ready needlepoint chart with DMC floss colors, labeled grids, and thread shopping links — entirely in your browser.
+A tool from **Live Oak Design House**. Turn any photo or artwork into a stitch-ready needlepoint chart with DMC floss colors, labeled grids, and thread shopping links — entirely in your browser.
 
 ## Features
 
 - **Image upload** — PNG, JPG, WebP, GIF, and BMP
 - **Color control** — adjust color count (2–60) and style (natural, vivid, muted, poster)
-- **Canvas sizing** — preset sizes at 10–18 HPI, or custom width × height in canvas holes
+- **Canvas sizing** — preset sizes, or custom width × height plus a fully custom **Mesh Count/HPI** field (any value 2–60)
 - **DMC matching** — 456 DMC floss colors matched via CIE76 color distance
-- **Stitch styles** — Tent, Continental, Basketweave, Half Cross, Cross Stitch, and **Wave Tent**
+- **Stitch styles** — 16 styles: Tent, Continental, Basketweave, Half Cross, Cross Stitch, Vertical, Horizontal, Parisian, Mosaic, Cashmere, Brick, Hungarian, Encroaching, Kenny, Scotch, Slavobasket, and the custom **Wave Tent** with two-strand color blending
 - **Labeled grid** — symbols on each cell for black-and-white printing
 - **Thread list** — DMC number, name, hex, stitch count, buy links (DMC + Amazon)
 - **Export** — PNG chart, SVG chart, CSV thread list
@@ -89,7 +89,7 @@ Select **Wave Tent** in the stitch style dropdown to preview the staggered patte
 | Large | 10×12 in | 14 | 140×168 |
 | Pillow | 14×14 in | 10 | 140×140 |
 
-Custom mode lets you set width, height, and HPI directly.
+Custom mode lets you set width, height, and **Mesh Count/HPI** directly (any value from 2 to 60) — not limited to preset step values.
 
 ## DMC Color Data
 
