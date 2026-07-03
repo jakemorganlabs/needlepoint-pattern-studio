@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Convert photos into DMC floss needlepoint patterns with labeled grids, thread lists, and purchase links." />
+  <title>Needlepoint Pattern Maker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <p class="brand-kicker">Canvas &amp; Thread</p>
+          <h1 class="brand-title">Needlepoint Pattern Maker</h1>
+        </div>
+      </div>
+      <p class="brand-tagline">Turn any image into a stitch-ready DMC chart — entirely in your browser.</p>
+    </header>
+
+    <nav class="section-nav" role="tablist" aria-label="Workflow sections">
+      <button class="section-tab is-active" role="tab" aria-selected="true" data-section="upload">Upload</button>
+      <button class="section-tab" role="tab" aria-selected="false" data-section="adjust">Adjust</button>
+      <button class="section-tab" role="tab" aria-selected="false" data-section="pattern">Pattern</button>
+      <button class="section-tab" role="tab" aria-selected="false" data-section="threads">Threads</button>
+      <button class="section-tab" role="tab" aria-selected="false" data-section="export">Export</button>
+    </nav>
+
+    <main class="workspace">
+      <aside class="control-panel">
+        <section class="panel-section is-visible" data-panel="upload">
+          <h2 class="panel-heading">Upload your image</h2>
+          <p class="panel-lead">PNG, JPG, WebP, GIF, and BMP supported. Processing stays on your device.</p>
+          <label class="dropzone" id="dropzone" tabindex="0">
+            <input type="file" id="file-input" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp" hidden />
+            <span class="dropzone-icon" aria-hidden="true">↑</span>
+            <span class="dropzone-text">Drop an image here or click to browse</span>
+            <span class="dropzone-hint">Best results with clear subjects and good contrast</span>
+          </label>
+          <div class="preview-thumb" id="source-preview" hidden>
+            <img id="source-image" alt="Uploaded source image preview" />
+          </div>
+        </section>
+
+        <section class="panel-section" data-panel="adjust" hidden>
+          <h2 class="panel-heading">Adjust your pattern</h2>
+
+          <div class="control-group">
+            <label for="color-count">Color count <output id="color-count-value">24</output></label>
+            <input type="range" id="color-count" min="2" max="60" value="24" />
+          </div>
+
+          <div class="control-group">
+            <label for="style-select">Image style</label>
+            <select id="style-select">
+              <option value="natural">Natural — faithful to source</option>
+              <option value="vivid">Vivid — boosted saturation</option>
+              <option value="muted">Muted — soft, tonal</option>
+              <option value="poster">Poster — flat color blocks</option>
+            </select>
+          </div>
+
+          <fieldset class="control-group">
+            <legend>Canvas size</legend>
+            <select id="preset-select">
+              <option value="medium">Medium — 8×10 in @ 14 HPI</option>
+              <option value="small">Small — 6×6 in @ 14 HPI</option>
+              <option value="large">Large — 10×12 in @ 14 HPI</option>
+              <option value="pillow">Pillow — 14×14 in @ 10 HPI</option>
+              <option value="mini">Mini — 4×4 in @ 18 HPI</option>
+              <option value="custom">Custom dimensions</option>
+            </select>
+            <div class="custom-dims" id="custom-dims" hidden>
+              <label>Width (holes) <input type="number" id="custom-width" min="10" max="400" value="100" /></label>
+              <label>Height (holes) <input type="number" id="custom-height" min="10" max="400" value="100" /></label>
+              <label>HPI <select id="custom-hpi">
+                <option value="10">10</option>
+                <option value="12">12</option>
+                <option value="14" selected>14</option>
+                <option value="16">16</option>
+                <option value="18">18</option>
+              </select></label>
+            </div>
+            <label class="checkbox-row">
+              <input type="checkbox" id="preserve-aspect" checked />
+              Preserve image aspect ratio
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" id="unit-cm" />
+              Show size in centimeters
+            </label>
+            <p class="size-readout" id="size-readout">—</p>
+          </fieldset>
+
+          <div class="control-group">
+            <label for="stitch-select">Stitch style</label>
+            <select id="stitch-select"></select>
+            <p class="stitch-description" id="stitch-description"></p>
+          </div>
+
+          <div class="control-group">
+            <label class="checkbox-row">
+              <input type="checkbox" id="show-labels" checked />
+              Show color symbols on grid
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" id="show-stitches" checked />
+              Show stitch overlay
+            </label>
+          </div>
+
+          <button type="button" class="btn btn-primary" id="generate-btn">Generate pattern</button>
+        </section>
+
+        <section class="panel-section" data-panel="pattern" hidden>
+          <h2 class="panel-heading">Pattern preview</h2>
+          <p class="panel-lead" id="pattern-summary">Your generated chart appears in the preview.</p>
+          <div class="control-group">
+            <label for="zoom-range-side">Cell size <output id="zoom-value">16</output>px</label>
+            <input type="range" id="zoom-range-side" min="8" max="32" value="16" />
+          </div>
+          <div class="control-group">
+            <label class="checkbox-row">
+              <input type="checkbox" id="show-labels-side" checked />
+              Show color symbols
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" id="show-stitches-side" checked />
+              Show stitch overlay
+            </label>
+          </div>
+          <p class="size-readout" id="pattern-stats-side">—</p>
+          <button type="button" class="btn btn-secondary" id="regenerate-btn">Regenerate with current settings</button>
+        </section>
+
+        <section class="panel-section" data-panel="threads" hidden>
+          <h2 class="panel-heading">Thread palette</h2>
+          <p class="panel-lead" id="palette-summary">Generate a pattern to see your DMC thread list.</p>
+          <ul class="thread-list" id="thread-list"></ul>
+        </section>
+
+        <section class="panel-section" data-panel="export" hidden>
+          <h2 class="panel-heading">Export</h2>
+          <p class="panel-lead">Download your pattern chart and shopping list.</p>
+          <div class="export-actions">
+            <button type="button" class="btn btn-primary" id="export-png" disabled>Download PNG chart</button>
+            <button type="button" class="btn btn-secondary" id="export-svg" disabled>Download SVG chart</button>
+            <button type="button" class="btn btn-secondary" id="export-csv" disabled>Download thread list (CSV)</button>
+          </div>
+        </section>
+      </aside>
+
+      <div class="preview-stage">
+        <section class="panel-section is-visible" data-panel="upload">
+          <div class="hero-preview" id="hero-preview">
+            <div class="hero-grid" aria-hidden="true"></div>
+            <p class="hero-message">Your stitch chart will appear here</p>
+          </div>
+        </section>
+        <section class="panel-section" data-panel="adjust" hidden></section>
+        <section class="panel-section pattern-view" data-panel="pattern" hidden>
+          <div class="pattern-toolbar">
+            <label>Zoom
+              <input type="range" id="zoom-range" min="8" max="32" value="16" />
+            </label>
+            <span id="grid-stats">—</span>
+          </div>
+          <div class="pattern-scroll" id="pattern-scroll">
+            <div id="pattern-mount"></div>
+          </div>
+        </section>
+        <section class="panel-section" data-panel="threads" hidden>
+          <div class="legend-panel" id="legend-panel">
+            <h3>Color key</h3>
+            <ul class="legend-list" id="legend-list"></ul>
+          </div>
+        </section>
+        <section class="panel-section" data-panel="export" hidden>
+          <div class="export-preview" id="export-preview">
+            <p>Export downloads the full-resolution pattern with your current settings.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>All processing runs locally. DMC color data for matching only — not affiliated with DMC.</p>
+      <p><a href="LICENSE">License</a> · Personal use permitted · No commercial use without permission</p>
+    </footer>
+  </div>
+
+  <canvas id="hidden-canvas" hidden aria-hidden="true"></canvas>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>
