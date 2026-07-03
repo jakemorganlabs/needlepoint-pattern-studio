@@ -102,9 +102,7 @@ This project is not affiliated with DMC or Amazon.
 
 ## License
 
-**Exclusive — no commercial use without permission.**
-
-Personal, non-commercial needlepoint use is permitted. Commercial use, redistribution, and derivative distribution require written permission from the copyright holder. See [LICENSE](LICENSE) for full terms.
+Released under the [MIT License](LICENSE). Copyright (c) 2026 jakemorganlabs.
 
 ## Tech
 
