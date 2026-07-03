@@ -34,8 +34,8 @@ modules and `fetch()`, so it must be served over HTTP (these are blocked on `fil
 Run it locally:
 
 ```bash
-git clone https://github.com/jakemorganlabs/needlepoint-pattern-maker.git
-cd needlepoint-pattern-maker
+git clone https://github.com/jakemorganlabs/needlepoint-pattern-studio.git
+cd needlepoint-pattern-studio
 python3 -m http.server 8080
 # open http://localhost:8080
 ```
@@ -45,7 +45,7 @@ Deploy to GitHub Pages:
 1. Push this repo to GitHub
 2. **Settings → Pages**
 3. Source: **Deploy from branch** → `main` → `/ (root)`
-4. Live at `https://<username>.github.io/needlepoint-pattern-maker/`
+4. Live at `https://<username>.github.io/needlepoint-pattern-studio/`
 
 Works on Netlify, Vercel, or any static host — just serve the root directory.
 
